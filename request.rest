@@ -1,0 +1,119 @@
+### Login
+POST http://localhost/apisirs6v2/login
+Content-Type: application/json
+
+{
+    "userName": "kotakelektronik@gmail.com",
+    "password": "12345"
+}
+
+### Refresh
+GET http://localhost/apisirs6v2/token
+
+### Logut
+DELETE http://localhost/apisirs6v2/logout
+
+### Get Specific User
+GET http://localhost/apisirs6v2/users/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtYSI6IkR3aSBQIiwiZW1haWwiOiJrb3Rha2VsZWt0cm9uaWtAZ21haWwuY29tIiwicnNJZCI6IjExMDIwMTYiLCJqZW5pc1VzZXJJZCI6NCwiaWF0IjoxNzAyMTA5NTE0LCJleHAiOjE3MDIxMTA0MTR9.vVMvTqOLLgdtrH4KtgxTqJqKQmYKwFgEPxjGFbSnlIs
+
+### Get Rumah Sakit
+GET http://localhost/apisirs6v2/rumahsakit?kabKotaId=3174
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtYSI6IkR3aSBQIiwiZW1haWwiOiJrb3Rha2VsZWt0cm9uaWtAZ21haWwuY29tIiwicnNJZCI6IjExMDIwMTYiLCJqZW5pc1VzZXJJZCI6NCwiaWF0IjoxNzAyODI0Mjc0LCJleHAiOjE3MDI4MjUxNzR9.BOwO-NeUO0TYojCzCSesnVy1vtnnKdRYrkFGft2i_-o
+
+### Get Specific Rumah Sakit
+GET http://localhost/apisirs6v2/rumahsakit/3101002,3174063
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtYSI6IkR3aSBQIiwiZW1haWwiOiJrb3Rha2VsZWt0cm9uaWtAZ21haWwuY29tIiwic2F0S2VySWQiOiIzMTc0MDYzIiwiamVuaXNVc2VySWQiOjQsImlhdCI6MTcwNDU4MjE3NywiZXhwIjoxNzA0NTgzMDc3fQ.vT7ixHmYSwtEQAbBoboAVRJkXYt9Hwr8323ksZH-SK0
+
+### RL 3.2 Jenis Pelayanan
+GET http://localhost/apisirs6v2/rltigatitikduajenispelayanan
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtYSI6IkR3aSBQIiwiZW1haWwiOiJrb3Rha2VsZWt0cm9uaWtAZ21haWwuY29tIiwic2F0S2VySWQiOiIzMTc0MDYzIiwiamVuaXNVc2VySWQiOjQsImlhdCI6MTcwNDY4NDYwOSwiZXhwIjoxNzA0Njg1NTA5fQ.sZTmY0rBAtfsPeCqJCt26sR46uqYHVHzpGYXXA9DxJQ
+
+### Provinsi
+GET http://localhost/apisirs6v2/provinsi/11
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtYSI6IkR3aSBQIiwiZW1haWwiOiJrb3Rha2VsZWt0cm9uaWtAZ21haWwuY29tIiwic2F0S2VySWQiOiIzMTc0MDYzIiwiamVuaXNVc2VySWQiOjQsImlhdCI6MTcwNDg2NTQ3NSwiZXhwIjoxNzA0ODY2Mzc1fQ.N0sxzh3CXUg2Gyoaeb1vikhZOsKq6NNwItYlQEthi8s
+### KabKota
+GET http://localhost/apisirs6v2/kabkota
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtYSI6IkR3aSBQIiwiZW1haWwiOiJrb3Rha2VsZWt0cm9uaWtAZ21haWwuY29tIiwicnNJZCI6IjExMDIwMTYiLCJqZW5pc1VzZXJJZCI6NCwiaWF0IjoxNzAyODIzMDY5LCJleHAiOjE3MDI4MjM5Njl9.LPh06lUY_nt_N4ERK3CcZmE65PPhUmTIqbbulC-ZPQ8
+
+### RL 3.2 READ
+GET http://localhost/apisirs6v2/rltigatitikdua?rsId=3174063&periode=2023-01
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtYSI6IkR3aSBQIiwiZW1haWwiOiJrb3Rha2VsZWt0cm9uaWtAZ21haWwuY29tIiwic2F0S2VySWQiOiIzMTc0MDYzIiwiamVuaXNVc2VySWQiOjQsImlhdCI6MTcwNDY4Njg5NCwiZXhwIjoxNzA0Njg3Nzk0fQ.f74rJMfoudnmpKj8vjQGl7ewwW4w_kl9uSn93Q8Ujj4
+
+### RL 3.2 Specific READ
+GET http://localhost/apisirs6v2/rltigatitikdua/55
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtYSI6IkR3aSBQIiwiZW1haWwiOiJrb3Rha2VsZWt0cm9uaWtAZ21haWwuY29tIiwic2F0S2VySWQiOiIzMTc0MDYzIiwiamVuaXNVc2VySWQiOjQsImlhdCI6MTcwNDY5NTE4MiwiZXhwIjoxNzA0Njk2MDgyfQ.RmWk5-C7IFDx0ZTV6Tvu0uQWchBRlBtsp4ZjguLQHRY
+
+### RL 3.2 CREATE
+POST http://localhost/apisirs6v2/rltigatitikdua
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtYSI6IkR3aSBQIiwiZW1haWwiOiJrb3Rha2VsZWt0cm9uaWtAZ21haWwuY29tIiwic2F0S2VySWQiOiIzMTc0MDYzIiwiamVuaXNVc2VySWQiOjQsImlhdCI6MTcwNDk0NzU0OCwiZXhwIjoxNzA0OTQ4NDQ4fQ.LUd4qwrkSEW8YlUshYkVbNv9cjD0Gt8S7wTROsWxL4g
+
+{
+    "periodeBulan": 5,
+    "periodeTahun": 2023,
+    "data": [
+        {
+            "rlTigaTitikDuaJenisPelayananId": 1,
+            "pasienAwalBulan": 2,
+            "pasienMasuk": 3,
+            "pasienKeluarHidup": 4,
+            "pasienKeluarMatiKurangDari48Jam": 4,
+            "pasienKeluarMatiLebihDariAtauSamaDengan48Jam":5,
+            "jumlahLamaDirawat": 5,
+            "rincianHariPerawatanKelasVVIP": 8,
+            "rincianHariPerawatanKelasVIP": 9,
+            "rincianHariPerawatanKelas1": 10,
+            "rincianHariPerawatanKelas2": 11,
+            "rincianHariPerawatanKelas3": 12,
+            "rincianHariPerawatanKelasKhusus": 13,
+            "jumlahAlokasiTempatTidurAwalBulan": 1
+        },
+        {
+            "rlTigaTitikDuaJenisPelayananId": 2,
+            "pasienAwalBulan": 2,
+            "pasienMasuk": 3,
+            "pasienKeluarHidup": 4,
+            "pasienKeluarMatiKurangDari48Jam": 4,
+            "pasienKeluarMatiLebihDariAtauSamaDengan48Jam":5,
+            "jumlahLamaDirawat": 5,
+            "rincianHariPerawatanKelasVVIP": 8,
+            "rincianHariPerawatanKelasVIP": 9,
+            "rincianHariPerawatanKelas1": 10,
+            "rincianHariPerawatanKelas2": 11,
+            "rincianHariPerawatanKelas3": 12,
+            "rincianHariPerawatanKelasKhusus": 13,
+            "jumlahAlokasiTempatTidurAwalBulan": 1
+        }
+    ]
+}
+
+### RL. 3.2 UPDATE
+PATCH http://localhost/apisirs6v2/rltigatitikdua/55
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtYSI6IkR3aSBQIiwiZW1haWwiOiJrb3Rha2VsZWt0cm9uaWtAZ21haWwuY29tIiwic2F0S2VySWQiOiIzMTc0MDYzIiwiamVuaXNVc2VySWQiOjQsImlhdCI6MTcwNDY5NTAzOSwiZXhwIjoxNzA0Njk1OTM5fQ.sLnhsj9J2kN-kH6Juls7eUrDoIkaRe1aQmI__2kSIow
+
+{
+    "pasienAwalBulan": 1,
+    "pasienMasuk": 3,
+    "pasienKeluarHidup": 4,
+    "pasienKeluarMatiKurangDari48Jam": 4,
+    "pasienKeluarMatiLebihDariAtauSamaDengan48Jam":5,
+    "jumlahLamaDirawat": 5,
+    "rincianHariPerawatanKelasVVIP": 8,
+    "rincianHariPerawatanKelasVIP": 9,
+    "rincianHariPerawatanKelas1": 10,
+    "rincianHariPerawatanKelas2": 11,
+    "rincianHariPerawatanKelas3": 12,
+    "rincianHariPerawatanKelasKhusus": 13,
+    "jumlahAlokasiTempatTidurAwalBulan": 1,
+    "kelompokJenisPelayananId": 1
+}
+
+### RL 3.2 DELETE
+DELETE http://localhost/apisirs6v2/rltigatitikdua/40
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibmFtYSI6IlJTIFVtdW0gRGFlcmFoIERyLiBILiBZdWxpZGluIEF3YXkiLCJlbWFpbCI6IjExMDMwMTAiLCJyc0lkIjoiMTEwMzAxMCIsImplbmlzVXNlcklkIjo0LCJpYXQiOjE3MDE1OTAwODgsImV4cCI6MTcwMTU5MDk4OH0.7v2PYWAAlqzCJowB5Fs1tyfplz9OVWWYkXYq7JX_Jt0
+
+### RL 5.3 READ
+GET http://localhost/apisirs6v2/rllimatitiktiga?rsId=3174063&periode=2024-1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtYSI6IkR3aSBQIiwiZW1haWwiOiJrb3Rha2VsZWt0cm9uaWtAZ21haWwuY29tIiwic2F0S2VySWQiOiIzMTc0MDYzIiwiamVuaXNVc2VySWQiOjQsImlhdCI6MTcwNDk1MzkyMywiZXhwIjoxNzA0OTU0ODIzfQ.5RTHVP46kpK4iesu-nfVVqfM6gzMOTUmROPqUYvgH_8
