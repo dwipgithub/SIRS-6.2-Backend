@@ -32,6 +32,23 @@ import { getGolonganObatRLTigaTitikTujuhBelas } from '../controllers/RLTigaTitik
 //Golongan Obat RL 3.18
 import { getGolonganObatRLTigaTitikDelapanBelas } from '../controllers/RLTigaTitikDelapanBelasGolonganObatController.js'
 
+// MASTER 3.13
+import {
+    getDataJenisTindakanRLTigaTitikTigaBelas,
+    getDataJenisTindakanHeaderRLTigaTitikTigaBelas,
+  } from "../controllers/RLTigaTitikTigaBelasJenisTindakanController.js";
+
+  
+  
+  // MASTER 5.1
+  import {
+    getDataIcdRLLimaTitikSatu,
+    getIcdRajalbySearch,
+    getIcdRajalbyId,
+  } from "../controllers/IcdRLLimaTitikSatuController.js";
+  
+
+
 // Provinsi
 import { getProvinsi, showProvinsi } from '../controllers/ProvinsiController.js'
 
@@ -41,7 +58,7 @@ import { getKabKota, showKabKota } from '../controllers/KabKotaController.js'
 // RL 3.2
 import { getRLTigaTitikDua, showRLTigaTitikDua, insertRLTigaTitikDua, deleteRLTigaTitikDua, updateRLTigaTitikDua } from '../controllers/RLTigaTitikDuaController.js'
 
-import { getRLLimaTitikSatu } from '../controllers/RLLimaTitikSatuController.js'
+// import { getRLLimaTitikSatu } from '../controllers/RLLimaTitikSatuController.js'
 
 //Jenis Kegiatan RL 3.9
 import { getDataJenisKegiatanTigaTitikSembilan } from '../controllers/RLTigaTitikSembilanJenisKegiatanController.js'
@@ -105,6 +122,29 @@ import {
     updateDataRLEmpatTitikSatu,
 } from "../controllers/RLEmpatTitikSatuController.js"
 
+
+// RL 3.13 NEW
+import {
+    insertDataRLTigaTitikTigaBelas,
+    getDataRLTigaTitikTigaBelas,
+    getRLTigaTitikTigaBelasById,
+    getRLTigaTitikTigaBelas,
+    showRLTigaTitikTigaBelas,
+    updateDataRLTigaTitikTigaBelas,
+    deleteDataRLTigaTitikTigaBelas,
+  } from "../controllers/RLTigaTitikTigaBelasController.js";
+  
+  // RL 5.1
+  import {
+    deleteDataRLLimaTitikSatu,
+    getDataRLLimaTitikSatu,
+    getDataRLLimaTitikSatuById,
+    insertdataRLLimaTitikSatu,
+    updateDataRLLimaTitikSatu,
+  } from "../controllers/RLLimaTitikSatuController.js";
+  
+
+
 // RL 3.14
 import { deleteDataRLTigaTitikEmpatBelas, getDataRLTigaTitikEmpatBelasById, getDataRLTigaTitikEmpatBelasDetailKegiatan, insertDataRLTigaTitikEmpatBelas, updateDataRLTigaTitikEmpatBelas } from '../controllers/RLTigaTitikEmpatBelasController.js'
 
@@ -150,6 +190,22 @@ router.get('/apisirs6v2/rltigatitiksembilanjeniskegiatan', verifyToken, getDataJ
 
 // Jenis Kegiatan RL 3.11
 router.get("/apisirs6v2/jeniskegiatanrltigatitiksebelas", verifyToken, getDataJenisKegiatanRLTigaTitikSebelas)
+
+// JENIS TINDAKAN RL 3.13
+router.get(
+    "/apisirs6v2/jenistindakanrltigatitiktigabelas",
+    verifyToken,
+    getDataJenisTindakanRLTigaTitikTigaBelas
+  );
+
+// JENIS TINDAKAN HEADER RL 3.13
+router.get(
+    "/apisirs6v2/jenistindakanheaderrltigatitiktigabelas",
+    verifyToken,
+    getDataJenisTindakanHeaderRLTigaTitikTigaBelas
+  );
+
+  
 
 // Golongan Obat 3.17
 router.get('/apisirs6v2/rltigatitiktujuhbelasgolonganobat', verifyToken, getGolonganObatRLTigaTitikTujuhBelas)
@@ -203,6 +259,37 @@ router.get("/apisirs6v2/rltigatitikduabelas/:id",verifyToken, showRLTigaTitikDua
 router.patch("/apisirs6v2/rltigatitikduabelas/:id",verifyToken, updateDataRLTigaTitikDuaBelas)
 router.delete("/apisirs6v2/rltigatitikduabelas/:id", verifyToken, deleteDataRLTigaTitikDuaBelas)
 
+// RL 3.13 NEW
+router.post(
+    "/apisirs6v2/rltigatitiktigabelas",
+    verifyToken,
+    insertDataRLTigaTitikTigaBelas
+  );
+  
+  router.get(
+    "/apisirs6v2/rltigatitiktigabelas/",
+    verifyToken,
+    getRLTigaTitikTigaBelas
+  );
+  
+  router.get(
+    "/apisirs6v2/rltigatitiktigabelas/:id",
+    verifyToken,
+    showRLTigaTitikTigaBelas
+  );
+  
+  router.patch(
+    "/apisirs6v2/rltigatitiktigabelas/:id",
+    verifyToken,
+    updateDataRLTigaTitikTigaBelas
+  );
+
+  router.delete(
+    "/apisirs6v2/rltigatitiktigabelas/:id",
+    verifyToken,
+    deleteDataRLTigaTitikTigaBelas
+  );
+
 // RL 3.14
 router.post("/apisirs6v2/rltigatitikempatbelas",verifyToken,insertDataRLTigaTitikEmpatBelas)
 router.get("/apisirs6v2/rltigatitikempatbelas",verifyToken,getDataRLTigaTitikEmpatBelasDetailKegiatan)
@@ -236,6 +323,35 @@ router.get("/apisirs6v2/rlempattitikdua", verifyToken, getRLEmpatTitikDua)
 
 // RL 4.3
 router.get("/apisirs6v2/rlempattitiktiga", verifyToken, getRLEmpatTitikTiga)
+
+// RL 5.1
+router.post(
+    "/apisirs6v2/rllimatitiksatu",
+    verifyToken,
+    insertdataRLLimaTitikSatu
+  );
+  
+  router.get("/apisirs6v2/rllimatitiksatu", verifyToken, getDataRLLimaTitikSatu);
+  
+  router.get(
+    "/apisirs6v2/rllimatitiksatu/:id",
+    verifyToken,
+    getDataRLLimaTitikSatuById
+  );
+  
+  router.patch(
+    "/apisirs6v2/rllimatitiksatu/:id",
+    verifyToken,
+    updateDataRLLimaTitikSatu
+  );
+  
+  router.delete(
+    "/apisirs6v2/rllimatitiksatu/:id",
+    verifyToken,
+    deleteDataRLLimaTitikSatu
+  );
+
+  
 
 // RL 5.3
 router.get("/apisirs6v2/rllimatitikdua", verifyToken, getRLLimaTitikDua)
