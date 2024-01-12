@@ -11,7 +11,7 @@ export const getDataRLLimaTitikSatu = (req, res) => {
   const joi = Joi.extend(joiDate);
   const schema = joi.object({
     rsId: joi.string().required(),
-    periode: joi.date().format("YYYY-MM").required(),
+    periode: joi.date().format("YYYY-M").required(),
     page: joi.number(),
     limit: joi.number(),
   });
