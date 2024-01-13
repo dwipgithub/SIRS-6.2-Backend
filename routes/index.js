@@ -77,6 +77,10 @@ import { getProvinsi, showProvinsi } from '../controllers/ProvinsiController.js'
 // KabKota
 import { getKabKota, showKabKota } from '../controllers/KabKotaController.js'
 
+// RL 3.1
+import { getRLTigaTitikSatu, showRLTigaTitikSatu} from '../controllers/RLTigaTitikSatuController.js'
+
+
 // RL 3.2
 import { getRLTigaTitikDua, showRLTigaTitikDua, insertRLTigaTitikDua, deleteRLTigaTitikDua, updateRLTigaTitikDua } from '../controllers/RLTigaTitikDuaController.js'
 
@@ -238,6 +242,10 @@ router.get("/apisirs6v2/rltigatitikempatbelasjeniskegiatan", verifyToken, getDat
 router.get("/apisirs6v2/icd/rawat_inap", verifyToken, getIcdRanap)
 router.get("/apisirs6v2/icd/rawat_inap/find", verifyToken,getIcdRanapbySearch)
 router.get("/apisirs6v2/icd/rawat_inap/id",verifyToken,getIcdRanapbyId)
+
+// RL 3.1
+router.get('/apisirs6v2/rltigatitiksatu', verifyToken, getRLTigaTitikSatu)
+router.get('/apisirs6v2/rltigatitiksatu/:id', verifyToken, showRLTigaTitikSatu)
 
 // RL 3.2
 router.post('/apisirs6v2/rltigatitikdua', verifyToken, insertRLTigaTitikDua)
