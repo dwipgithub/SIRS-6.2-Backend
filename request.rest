@@ -93,13 +93,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtYSI6I
 }
 
 ### RL. 3.2 UPDATE
-PATCH http://localhost/apisirs6v2/rltigatitikdua/55
+PATCH http://localhost/apisirs6v2/rltigatitikdua/101
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtYSI6IkR3aSBQIiwiZW1haWwiOiJrb3Rha2VsZWt0cm9uaWtAZ21haWwuY29tIiwic2F0S2VySWQiOiIzMTc0MDYzIiwiamVuaXNVc2VySWQiOjQsImlhdCI6MTcwNDY5NTAzOSwiZXhwIjoxNzA0Njk1OTM5fQ.sLnhsj9J2kN-kH6Juls7eUrDoIkaRe1aQmI__2kSIow
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtYSI6IkR3aSBQIiwiZW1haWwiOiJrb3Rha2VsZWt0cm9uaWtAZ21haWwuY29tIiwic2F0S2VySWQiOiIzMTc0MDYzIiwiamVuaXNVc2VySWQiOjQsImlhdCI6MTcwNTMwNDUyNSwiZXhwIjoxNzA1MzA1NDI1fQ.WEv5fGy0WTezCJcra_JfMAPXJLMDwzSevHHLi4vEt9E
 
 {
-    "pasienAwalBulan": 1,
-    "pasienMasuk": 3,
+    "pasienAwalBulan": 10,
+    "pasienMasuk": 20,
     "pasienKeluarHidup": 4,
     "pasienKeluarMatiKurangDari48Jam": 4,
     "pasienKeluarMatiLebihDariAtauSamaDengan48Jam":5,
@@ -110,8 +110,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtYSI6I
     "rincianHariPerawatanKelas2": 11,
     "rincianHariPerawatanKelas3": 12,
     "rincianHariPerawatanKelasKhusus": 13,
-    "jumlahAlokasiTempatTidurAwalBulan": 1,
-    "kelompokJenisPelayananId": 1
+    "jumlahAlokasiTempatTidurAwalBulan": 11
 }
 
 ### RL 3.2 DELETE
