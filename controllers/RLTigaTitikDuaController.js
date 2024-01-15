@@ -81,12 +81,69 @@ export const insertRLTigaTitikDua =  async (req, res) => {
 
     const { error, value } =  schema.validate(req.body)
     if (error) {
-        res.status(404).send({
+        res.status(400).send({
             status: false,
             message: error.details[0].message
         })
         return
     }
+
+    let errorPasienAkhirBulan = false
+    let errorJumlahHariPerawatan = false
+    let errorJumlahAlokasiTempatTidurAwalBulan = false
+    req.body.data.forEach(element => { 
+        // hitung jumlah pasien akhir bulan
+        const pasienAkhirBulan = (parseInt(element.pasienAwalBulan) + parseInt(element.pasienMasuk)) -
+        (parseInt(element.pasienKeluarHidup) + parseInt(element.pasienKeluarMatiKurangDari48Jam) + 
+        parseInt(element.pasienKeluarMatiLebihDariAtauSamaDengan48Jam))
+
+        // hitung jumlah hari perawatan
+        const jumlahHariPerawatan = parseInt(element.rincianHariPerawatanKelasVVIP) +
+            parseInt(element.rincianHariPerawatanKelasVIP) + 
+            parseInt(element.rincianHariPerawatanKelas1) + 
+            parseInt(element.rincianHariPerawatanKelas2) + 
+            parseInt(element.rincianHariPerawatanKelas3) + 
+            parseInt(element.rincianHariPerawatanKelasKhusus)
+
+        const jumlahAlokasiTempatTidurAwalBulan = parseInt(element.jumlahAlokasiTempatTidurAwalBulan)
+
+        if (pasienAkhirBulan < 0) {
+            errorPasienAkhirBulan = true
+        }
+
+        if (jumlahHariPerawatan <= 0) {
+            errorJumlahHariPerawatan = true
+        }
+
+        if (jumlahAlokasiTempatTidurAwalBulan <= 0) {
+            errorJumlahAlokasiTempatTidurAwalBulan = true
+        }
+    })
+
+    if (errorPasienAkhirBulan) {
+        res.status(400).send({
+            status: false,
+            message: 'pasien akhir bulan tidak boleh bernilai 0'
+        })
+        return
+    }
+
+    if (errorJumlahHariPerawatan) {
+        res.status(400).send({
+            status: false,
+            message: 'jumlah hari perawatan tidak boleh kurang dari nilai 1'
+        })
+        return
+    }
+
+    if (errorJumlahAlokasiTempatTidurAwalBulan) {
+        res.status(400).send({
+            status: false,
+            message: 'jumlah alokasi tempat tidur awal bulan tidak boleh kurang dari nilai 1'
+        })
+        return
+    }
+
 
     const periodeBulan = String(req.body.periodeBulan)
     const periodeTahun = String(req.body.periodeTahun)
