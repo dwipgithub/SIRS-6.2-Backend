@@ -51,35 +51,35 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtYSI6I
 ### RL 3.2 CREATE
 POST http://localhost/apisirs6v2/rltigatitikdua
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtYSI6IkR3aSBQIiwiZW1haWwiOiJrb3Rha2VsZWt0cm9uaWtAZ21haWwuY29tIiwic2F0S2VySWQiOiIzMTc0MDYzIiwiamVuaXNVc2VySWQiOjQsImlhdCI6MTcwNDk0NzU0OCwiZXhwIjoxNzA0OTQ4NDQ4fQ.LUd4qwrkSEW8YlUshYkVbNv9cjD0Gt8S7wTROsWxL4g
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtYSI6IkR3aSBQIiwiZW1haWwiOiJrb3Rha2VsZWt0cm9uaWtAZ21haWwuY29tIiwic2F0S2VySWQiOiIzMTc0MDYzIiwiamVuaXNVc2VySWQiOjQsImlhdCI6MTcwNTMwMjA2NCwiZXhwIjoxNzA1MzAyOTY0fQ.97N3OkkZJpjD6MtY-Gil1HUx-seqOzrlM6yZ25SY2Rw
 
 {
-    "periodeBulan": 5,
+    "periodeBulan": 7,
     "periodeTahun": 2023,
     "data": [
         {
             "rlTigaTitikDuaJenisPelayananId": 1,
-            "pasienAwalBulan": 2,
-            "pasienMasuk": 3,
-            "pasienKeluarHidup": 4,
-            "pasienKeluarMatiKurangDari48Jam": 4,
-            "pasienKeluarMatiLebihDariAtauSamaDengan48Jam":5,
+            "pasienAwalBulan": 10,
+            "pasienMasuk": 10,
+            "pasienKeluarHidup": 1,
+            "pasienKeluarMatiKurangDari48Jam": 1,
+            "pasienKeluarMatiLebihDariAtauSamaDengan48Jam":1,
             "jumlahLamaDirawat": 5,
-            "rincianHariPerawatanKelasVVIP": 8,
-            "rincianHariPerawatanKelasVIP": 9,
-            "rincianHariPerawatanKelas1": 10,
-            "rincianHariPerawatanKelas2": 11,
-            "rincianHariPerawatanKelas3": 12,
-            "rincianHariPerawatanKelasKhusus": 13,
-            "jumlahAlokasiTempatTidurAwalBulan": 1
+            "rincianHariPerawatanKelasVVIP": 1,
+            "rincianHariPerawatanKelasVIP": 0,
+            "rincianHariPerawatanKelas1": 0,
+            "rincianHariPerawatanKelas2": 0,
+            "rincianHariPerawatanKelas3": 0,
+            "rincianHariPerawatanKelasKhusus": 0,
+            "jumlahAlokasiTempatTidurAwalBulan": 0
         },
         {
             "rlTigaTitikDuaJenisPelayananId": 2,
-            "pasienAwalBulan": 2,
-            "pasienMasuk": 3,
-            "pasienKeluarHidup": 4,
-            "pasienKeluarMatiKurangDari48Jam": 4,
-            "pasienKeluarMatiLebihDariAtauSamaDengan48Jam":5,
+            "pasienAwalBulan": 10,
+            "pasienMasuk": 10,
+            "pasienKeluarHidup": 1,
+            "pasienKeluarMatiKurangDari48Jam": 1,
+            "pasienKeluarMatiLebihDariAtauSamaDengan48Jam":1,
             "jumlahLamaDirawat": 5,
             "rincianHariPerawatanKelasVVIP": 8,
             "rincianHariPerawatanKelasVIP": 9,
