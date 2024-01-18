@@ -95,6 +95,9 @@ import { getDataJenisKegiatanTigaTitikSembilan } from '../controllers/RLTigaTiti
 //Jenis Kegiatan 3.15
 import { getDataJenisKegiatanTigaTitikLimaBelas } from "../controllers/JenisKegiatanTigaTitikLimaBelasController.js";
 
+// RL 3.16 Metoda
+import { getDataMetodaRLTigaTitikEnamBelas } from "../controllers/RLTigaTitikEnamBelasMetodaController.js"
+
 // RL 3.9 baru
 import { getRLTigaTitikSembilan, 
     showRLTigaTitikSembilan, 
@@ -135,7 +138,7 @@ import {
     showRLTigaTitikDuaBelas,
 } from "../controllers/RLTigaTitikDuaBelasController.js";
 
-//RL3.15 
+// RL3.15 
 import {
   getDataRLTigaTitikLimaBelas,
   insertDataRLTigaTitikLimaBelas,
@@ -144,6 +147,17 @@ import {
   getDataRLTigaTitikLimaBelasDetails,
   getDataRLTigaTitikLimaBelasById,
 } from "../controllers/RLTigaTitikLimaBelasController.js";
+
+// RL 3.16
+import {
+  insertDataRLTigaTitikEnamBelas,
+  getDataRLTigaTitikEnamBelas,
+  getRLTigaTitikEnamBelasById,
+  getRLTigaTitikEnamBelas,
+  showRLTigaTitikEnamBelas,
+  updateDataRLTigaTitikEnamBelas,
+  //deleteDataRLTigaTitikEnamBelas,
+} from "../controllers/RLTigaTitikEnamBelasController.js";
 
 // RL 3.17 baru
 import { getRLTigaTitikTujuhBelas, 
@@ -267,38 +281,6 @@ router.get("/apisirs6v2/rltigatitikempatbelasjeniskegiatan", verifyToken, getDat
 // Jenis Kegiatan 3.15
 router.get("/apisirs6v2/jeniskegiatantigatitiklimabelas", verifyToken, getDataJenisKegiatanTigaTitikLimaBelas)
 
-// RL 3.15
-router.get(
-  "/apisirs6v2/rltigatitiklimabelas",
-  verifyToken,
-  getDataRLTigaTitikLimaBelas
-);
-router.post(
-  "/apisirs6v2/rltigatitiklimabelas",
-  verifyToken,
-  insertDataRLTigaTitikLimaBelas
-);
-router.delete(
-  "/apisirs6v2/rltigatitiklimabelas/:id",
-  verifyToken,
-  deleteDataRLTigaTitikLimaBelas
-);
-router.get(
-  "/apisirs6v2/rltigatitiklimabelasdetail/:id",
-  verifyToken,
-  getDataRLTigaTitikLimaBelasById
-);
-// router.get(
-//   "/apisirs6v2/rltigatitiklimabelasdetail/:id",
-//   verifyToken,
-//   getDataRLTigaTitikLimaBelasDetails
-// );
-router.patch(
-  "/apisirs6v2/rltigatitiklimabelasdetail/:id",
-  verifyToken,
-  updateDataRLTigaTitikLimaBelas
-);
-
 // ICD RL 4
 router.get("/apisirs6v2/icd/rawat_inap", verifyToken, getIcdRanap)
 router.get("/apisirs6v2/icd/rawat_inap/find", verifyToken,getIcdRanapbySearch)
@@ -395,6 +377,69 @@ router.get("/apisirs6v2/rltigatitikempatbelas",verifyToken,getDataRLTigaTitikEmp
 router.get("/apisirs6v2/rltigatitikempatbelas/:id",verifyToken,getDataRLTigaTitikEmpatBelasById)
 router.delete("/apisirs6v2/rltigatitikempatbelas/:id",verifyToken,deleteDataRLTigaTitikEmpatBelas)
 router.patch("/apisirs6v2/rltigatitikempatbelas/:id",verifyToken,updateDataRLTigaTitikEmpatBelas)
+
+// RL 3.15
+router.get(
+  "/apisirs6v2/rltigatitiklimabelas",
+  verifyToken,
+  getDataRLTigaTitikLimaBelas
+);
+router.post(
+  "/apisirs6v2/rltigatitiklimabelas",
+  verifyToken,
+  insertDataRLTigaTitikLimaBelas
+);
+router.delete(
+  "/apisirs6v2/rltigatitiklimabelas/:id",
+  verifyToken,
+  deleteDataRLTigaTitikLimaBelas
+);
+router.get(
+  "/apisirs6v2/rltigatitiklimabelasdetail/:id",
+  verifyToken,
+  getDataRLTigaTitikLimaBelasById
+);
+// router.get(
+//   "/apisirs6v2/rltigatitiklimabelasdetail/:id",
+//   verifyToken,
+//   getDataRLTigaTitikLimaBelasDetails
+// );
+router.patch(
+  "/apisirs6v2/rltigatitiklimabelasdetail/:id",
+  verifyToken,
+  updateDataRLTigaTitikLimaBelas
+);
+
+// RL 3.16 
+router.get(
+  "/apisirs6v2/metodarltigatitikenambelas",
+  verifyToken,
+  getDataMetodaRLTigaTitikEnamBelas
+);
+
+router.post(
+  "/apisirs6v2/insertrltigatitikenambelas",
+  verifyToken,
+  insertDataRLTigaTitikEnamBelas
+);
+
+router.get(
+  "/apisirs6v2/rltigatitikenambelas/",
+  verifyToken,
+  getRLTigaTitikEnamBelas
+);
+
+router.get(
+  "/apisirs6v2/rltigatitikenambelas/update/:id",
+  verifyToken,
+  showRLTigaTitikEnamBelas
+);
+
+router.patch(
+  "/apisirs6v2/updaterltigatitikenambelas/:id",
+  verifyToken,
+  updateDataRLTigaTitikEnamBelas
+);
 
 // RL 3.17
 router.post('/apisirs6v2/rltigatitiktujuhbelas', verifyToken, insertDataRLTigaTitikTujuhBelas)
