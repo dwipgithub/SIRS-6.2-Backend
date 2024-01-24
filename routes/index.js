@@ -71,6 +71,9 @@ import { getGolonganObatRLTigaTitikTujuhBelas } from '../controllers/RLTigaTitik
 //Golongan Obat RL 3.18
 import { getGolonganObatRLTigaTitikDelapanBelas } from '../controllers/RLTigaTitikDelapanBelasGolonganObatController.js'
 
+// Golongan Obat 3.19
+import { getDataGolonganObatTigaTitikSembilanBelas } from "../controllers/GolonganObatTigaTitikSembilanBelasController.js";
+
 // MASTER 3.13
 import {getDataJenisTindakanRLTigaTitikTigaBelas, getDataJenisTindakanHeaderRLTigaTitikTigaBelas} from "../controllers/RLTigaTitikTigaBelasJenisTindakanController.js";
 
@@ -172,6 +175,16 @@ import { getRLTigaTitikDelapanBelas,
   insertDataRLTigaTitikDelapanBelas, 
   deleteRLTigaTitikDelapanBelas, 
   updateRLTigaTitikDelapanBelas } from '../controllers/RLTigaTitikDelapanBelasController.js'
+
+//RL3.19
+import {
+  getDataRLTigaTitikSembilanBelas,
+  insertDataRLTigaTitikSembilanBelas,
+  updateDataRLTigaTitikSembilanBelas,
+  deleteDataRLTigaTitikSembilanBelas,
+  getDataRLTigaTitikSembilanBelasDetails,
+  getDataRLTigaTitikSembilanBelasById,
+} from "../controllers/RLTigaTitikSembilanBelasController.js";
   
 // RL 3.8
 import { deleteDataRLTigaTitikDelapan, getDataRLTigaTitikDelapan, getDataRLTigaTitikDelapanById,
@@ -271,6 +284,13 @@ router.get('/apisirs6v2/rltigatitiktujuhbelasgolonganobat', verifyToken, getGolo
 
 // Golongan Obat 3.18
 router.get('/apisirs6v2/rltigatitikdelapanbelasgolonganobat', verifyToken, getGolonganObatRLTigaTitikDelapanBelas)
+
+// Golongan Obat 3.19 new
+router.get(
+  "/apisirs6v2/golonganobattigatitiksembilanbelas",
+  verifyToken,
+  getDataGolonganObatTigaTitikSembilanBelas
+);
 
 // Spesialisasi RL 3.12
 router.get("/apisirs6v2/spesialisasirltigatitikduabelas", verifyToken, getDataSpesialisasiRLTigaTitikDuaBelas)
@@ -454,6 +474,38 @@ router.get('/apisirs6v2/rltigatitikdelapanbelas', verifyToken, getRLTigaTitikDel
 router.delete('/apisirs6v2/rltigatitikdelapanbelas/:id', verifyToken, deleteRLTigaTitikDelapanBelas)
 router.get('/apisirs6v2/rltigatitikdelapanbelas/:id', verifyToken, showRLTigaTitikDelapanBelas)
 router.patch('/apisirs6v2/rltigatitikdelapanbelas/:id', verifyToken, updateRLTigaTitikDelapanBelas)
+
+// RL 3.19 new
+router.post(
+  "/apisirs6v2/rltigatitiksembilanbelas",
+  verifyToken,
+  insertDataRLTigaTitikSembilanBelas
+);
+router.get(
+  "/apisirs6v2/rltigatitiksembilanbelas",
+  verifyToken,
+  getDataRLTigaTitikSembilanBelas
+);
+router.delete(
+  "/apisirs6v2/rltigatitiksembilanbelas/:id",
+  verifyToken,
+  deleteDataRLTigaTitikSembilanBelas
+);
+router.get(
+  "/apisirs6v2/rltigatitiksembilanbelasdetail/:id",
+  verifyToken,
+  getDataRLTigaTitikSembilanBelasById
+);
+router.get(
+  "/apisirs6v2/cekrltigatitiksembilanbelasdetail/",
+  verifyToken,
+  getDataRLTigaTitikSembilanBelasDetails
+);
+router.patch(
+  "/apisirs6v2/rltigatitiksembilanbelasdetail/:id",
+  verifyToken,
+  updateDataRLTigaTitikSembilanBelas
+);
 
 // RL 4.1
 router.post("/apisirs6v2/rlempattitiksatu", verifyToken, insertDataRLEmpatTitikSatu);
