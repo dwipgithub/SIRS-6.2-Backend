@@ -1,6 +1,9 @@
 import { DataTypes, QueryTypes } from "sequelize";
 import { databaseSIRS } from "../config/Database.js";
-import { MetodaRLTigaTitikEnamBelas } from "./RLTigaTitikEnamBelasMetoda.js";
+import {
+  JenisPelayananKeluargaberencana,
+  MetodaRLTigaTitikEnamBelas,
+} from "./RLTigaTitikEnamBelasMetoda.js";
 
 export const rlTigaTitikEnamBelasHeader = databaseSIRS.define(
   "rl_tiga_titik_enam_belas",
@@ -78,12 +81,18 @@ export const get = (req, callback) => {
     "rl316d.komplikasi_kb, " +
     "rl316d.kegagalan_kb, " +
     "rl316d.efek_samping, " +
-    "rl316d.drop_out " ;
+    "rl316d.drop_out ";
+
+  // const sqlFrom =
+  //   "FROM " +
+  //   "rl_tiga_titik_enam_belas_detail rl316d " +
+  //   "JOIN rl_tiga_titik_enam_belas_metoda rlm " +
+  //   "ON rlm.id = rl316d.rl_tiga_titik_enam_belas_metoda_id ";
 
   const sqlFrom =
     "FROM " +
     "rl_tiga_titik_enam_belas_detail rl316d " +
-    "JOIN rl_tiga_titik_enam_belas_metoda rlm " +
+    "JOIN rl_tiga_titik_enam_belas_jenis_pelayanan_keluarga_berencana rlm " +
     "ON rlm.id = rl316d.rl_tiga_titik_enam_belas_metoda_id ";
 
   const sqlWhere = "WHERE ";
@@ -132,6 +141,29 @@ export const get = (req, callback) => {
 };
 
 export const show = (id, callback) => {
+  // const sql =
+  //   "SELECT " +
+  //   "rl316d.id, " +
+  //   "rl316d.rs_id, " +
+  //   "rl316d.periode, " +
+  //   "rlm.id AS id_metoda, " +
+  //   "rlm.nama, " +
+  //   "rl316d.pelayanan_kb_paska_persalinan, " +
+  //   "rl316d.pelayanan_kb_paska_keguguran, " +
+  //   "rl316d.pelayanan_kb_interval, " +
+  //   "(rl316d.pelayanan_kb_paska_persalinan + rl316d.pelayanan_kb_paska_keguguran + rl316d.pelayanan_kb_interval)" +
+  //   " AS pelayanan_kb_total, " +
+  //   "rl316d.komplikasi_kb, " +
+  //   "rl316d.kegagalan_kb, " +
+  //   "rl316d.efek_samping, " +
+  //   "rl316d.drop_out " +
+  //   "FROM " +
+  //   "rl_tiga_titik_enam_belas_detail rl316d " +
+  //   "JOIN rl_tiga_titik_enam_belas_metoda rlm " +
+  //   "ON rlm.id = rl316d.rl_tiga_titik_enam_belas_metoda_id " +
+  //   "WHERE " +
+  //   "rl316d.id = ? ";
+
   const sql =
     "SELECT " +
     "rl316d.id, " +
@@ -150,7 +182,7 @@ export const show = (id, callback) => {
     "rl316d.drop_out " +
     "FROM " +
     "rl_tiga_titik_enam_belas_detail rl316d " +
-    "JOIN rl_tiga_titik_enam_belas_metoda rlm " +
+    "JOIN rl_tiga_titik_enam_belas_jenis_pelayanan_keluarga_berencana rlm " +
     "ON rlm.id = rl316d.rl_tiga_titik_enam_belas_metoda_id " +
     "WHERE " +
     "rl316d.id = ? ";
@@ -187,5 +219,9 @@ MetodaRLTigaTitikEnamBelas.hasMany(rlTigaTitikEnamBelasDetail, {
 });
 
 rlTigaTitikEnamBelasDetail.belongsTo(MetodaRLTigaTitikEnamBelas, {
+  foreignKey: "rl_tiga_titik_enam_belas_metoda_id",
+});
+
+rlTigaTitikEnamBelasDetail.belongsTo(JenisPelayananKeluargaberencana, {
   foreignKey: "rl_tiga_titik_enam_belas_metoda_id",
 });

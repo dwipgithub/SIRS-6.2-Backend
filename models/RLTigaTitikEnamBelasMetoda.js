@@ -19,3 +19,19 @@ export const MetodaRLTigaTitikEnamBelas = databaseSIRS.define(
     freezeTableName: true,
   }
 );
+
+export const JenisPelayananKeluargaberencana = databaseSIRS.define(
+  "rl_tiga_titik_enam_belas_jenis_pelayanan_keluarga_berencana",
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+    },
+    nama: {
+      type: DataTypes.STRING,
+    },
+  },
+  {
+    freezeTableName: true,
+  }
+);

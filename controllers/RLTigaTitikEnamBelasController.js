@@ -5,7 +5,10 @@ import {
   get,
   show,
 } from "../models/RLTigaTitikEnamBelas.js";
-import { MetodaRLTigaTitikEnamBelas } from "../models/RLTigaTitikEnamBelasMetoda.js";
+import {
+  JenisPelayananKeluargaberencana,
+  MetodaRLTigaTitikEnamBelas,
+} from "../models/RLTigaTitikEnamBelasMetoda.js";
 import Joi from "joi";
 
 export const insertDataRLTigaTitikEnamBelas = async (req, res) => {
@@ -15,7 +18,7 @@ export const insertDataRLTigaTitikEnamBelas = async (req, res) => {
       .items(
         Joi.object()
           .keys({
-            SpesialisasiId: Joi.number().required(),
+            JenisPelayananKeluargaBerencanaId: Joi.number().required(),
             pelayananKbPaskaPersalinan: Joi.number().required(),
             pelayananKbPaskaKeguguran: Joi.number().required(),
             pelayananKbInterval: Joi.number().required(),
@@ -54,12 +57,16 @@ export const insertDataRLTigaTitikEnamBelas = async (req, res) => {
     );
 
     const dataDetail = req.body.data.map((value, index) => {
-      let pelayanan_Kbtotal = value.pelayananKbPaskaPersalinan + value.pelayananKbPaskaKeguguran + value.pelayananKbInterval;
+      let pelayanan_Kbtotal =
+        value.pelayananKbPaskaPersalinan +
+        value.pelayananKbPaskaKeguguran +
+        value.pelayananKbInterval;
       return {
         rs_id: req.user.satKerId,
         periode: req.body.tahun,
         rl_tiga_titik_enam_belas_id: resultInsertHeader.id,
-        rl_tiga_titik_enam_belas_metoda_id: value.SpesialisasiId,
+        rl_tiga_titik_enam_belas_metoda_id:
+          value.JenisPelayananKeluargaBerencanaId,
         pelayanan_kb_paska_persalinan: value.pelayananKbPaskaPersalinan,
         pelayanan_kb_paska_keguguran: value.pelayananKbPaskaKeguguran,
         pelayanan_kb_interval: value.pelayananKbInterval,
@@ -76,8 +83,16 @@ export const insertDataRLTigaTitikEnamBelas = async (req, res) => {
       dataDetail,
       {
         transaction,
-        updateOnDuplicate: ["pelayanan_kb_paska_persalinan","pelayanan_kb_paska_keguguran","pelayanan_kb_interval","pelayanan_kb_total",
-        "komplikasi_kb","kegagalan_kb","efek_samping","drop_out"],
+        updateOnDuplicate: [
+          "pelayanan_kb_paska_persalinan",
+          "pelayanan_kb_paska_keguguran",
+          "pelayanan_kb_interval",
+          "pelayanan_kb_total",
+          "komplikasi_kb",
+          "kegagalan_kb",
+          "efek_samping",
+          "drop_out",
+        ],
       }
     );
 
@@ -219,7 +234,7 @@ export const getRLTigaTitikEnamBelasById = async (req, res) => {
         id: req.params.id,
       },
       include: {
-        model: MetodaRLTigaTitikEnamBelas,
+        model: JenisPelayananKeluargaberencana,
       },
     })
     .then((results) => {
@@ -240,14 +255,14 @@ export const getRLTigaTitikEnamBelasById = async (req, res) => {
 
 export const updateDataRLTigaTitikEnamBelas = async (req, res) => {
   const schema = Joi.object({
-    noMetoda: Joi.number().required(),
-    pelayananKbPaskaPersalinan: Joi.number().required(),
-    pelayananKbPaskaKeguguran: Joi.number().required(),
-    pelayananKbInterval: Joi.number().required(),
-    komplikasiKB: Joi.number().required(),
-    kegagalanKB: Joi.number().required(),
-    efekSamping: Joi.number().required(),
-    dropOut: Joi.number().required(),
+    // noMetoda: Joi.number().required(),
+    pelayanan_kb_paska_persalinan: Joi.number().required(),
+    pelayanan_kb_paska_keguguran: Joi.number().required(),
+    pelayanan_kb_interval: Joi.number().required(),
+    komplikasi_kb: Joi.number().required(),
+    kegagalan_kb: Joi.number().required(),
+    efek_samping: Joi.number().required(),
+    drop_out: Joi.number().required(),
   });
   const { error, value } = schema.validate(req.body);
   if (error) {
@@ -260,7 +275,10 @@ export const updateDataRLTigaTitikEnamBelas = async (req, res) => {
   let transaction;
   try {
     const data = req.body;
-    data["total"] = data.pelayananKbPaskaPersalinan + data.pelayananKbPaskaKeguguran + data.pelayananKbInterval;
+    data["pelayanan_kb_total"] =
+      data.pelayanan_kb_paska_persalinan +
+      data.pelayanan_kb_paska_keguguran +
+      data.pelayanan_kb_interval;
     try {
       transaction = await databaseSIRS.transaction();
       const update = await rlTigaTitikEnamBelasDetail.update(data, {
@@ -300,18 +318,18 @@ export const updateDataRLTigaTitikEnamBelas = async (req, res) => {
   }
 };
 
-export const deleteDataRLTigaTitikDuaBelas = async (req, res) => {
+export const deleteDataRLTigaTitikEnamBelas = async (req, res) => {
   let transaction;
   try {
     transaction = await databaseSIRS.transaction();
-    const count = await rlTigaTitikDuaBelasDetail.destroy({
+    const count = await rlTigaTitikEnamBelasDetail.destroy({
       where: {
         id: req.params.id,
         rs_id: req.user.satKerId,
       },
     });
     if (count != 0) {
-      console.log("atas");
+      // console.log("atas");
       await transaction.commit();
       res.status(201).send({
         status: true,
