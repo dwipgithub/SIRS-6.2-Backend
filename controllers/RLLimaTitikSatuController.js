@@ -339,86 +339,108 @@ export const insertdataRLLimaTitikSatu = async (req, res) => {
     if (
       dataDetail[0].total_kasus_baru <= dataDetail[0].total_jumlah_kunjungan
     ) {
-      try {
-        const resultInsertDetail = await rlLimaTitikSatuDetail.bulkCreate(
-          dataDetail,
-          {
-            transaction,
-            updateOnDuplicate: [
-              "rl_lima_titik_satu_id",
-              "jumlah_L_dibawah_1_jam",
-              "jumlah_P_dibawah_1_jam",
-              "jumlah_L_1_sampai_23_jam",
-              "jumlah_P_1_sampai_23_jam",
-              "jumlah_L_1_sampai_7_hari",
-              "jumlah_P_1_sampai_7_hari",
-              "jumlah_L_8_sampai_28_hari",
-              "jumlah_P_8_sampai_28_hari",
-              "jumlah_L_29_hari_sampai_dibawah_3_bulan",
-              "jumlah_P_29_hari_sampai_dibawah_3_bulan",
-              "jumlah_L_3_bulan_sampai_dibawah_6_bulan",
-              "jumlah_P_3_bulan_sampai_dibawah_6_bulan",
-              "jumlah_L_6_bulan_sampai_11_bulan",
-              "jumlah_P_6_bulan_sampai_11_bulan",
-              "jumlah_L_1_sampai_4_tahun",
-              "jumlah_P_1_sampai_4_tahun",
-              "jumlah_L_5_sampai_9_tahun",
-              "jumlah_P_5_sampai_9_tahun",
-              "jumlah_L_10_sampai_14_tahun",
-              "jumlah_P_10_sampai_14_tahun",
-              "jumlah_L_15_sampai_19_tahun",
-              "jumlah_P_15_sampai_19_tahun",
-              "jumlah_L_20_sampai_24_tahun",
-              "jumlah_P_20_sampai_24_tahun",
-              "jumlah_L_25_sampai_29_tahun",
-              "jumlah_P_25_sampai_29_tahun",
-              "jumlah_L_30_sampai_34_tahun",
-              "jumlah_P_30_sampai_34_tahun",
-              "jumlah_L_35_sampai_39_tahun",
-              "jumlah_P_35_sampai_39_tahun",
-              "jumlah_L_40_sampai_44_tahun",
-              "jumlah_P_40_sampai_44_tahun",
-              "jumlah_L_45_sampai_49_tahun",
-              "jumlah_P_45_sampai_49_tahun",
-              "jumlah_L_50_sampai_54_tahun",
-              "jumlah_P_50_sampai_54_tahun",
-              "jumlah_L_55_sampai_59_tahun",
-              "jumlah_P_55_sampai_59_tahun",
-              "jumlah_L_60_sampai_64_tahun",
-              "jumlah_P_60_sampai_64_tahun",
-              "jumlah_L_65_sampai_69_tahun",
-              "jumlah_P_65_sampai_69_tahun",
-              "jumlah_L_70_sampai_74_tahun",
-              "jumlah_P_70_sampai_74_tahun",
-              "jumlah_L_75_sampai_79_tahun",
-              "jumlah_P_75_sampai_79_tahun",
-              "jumlah_L_80_sampai_84_tahun",
-              "jumlah_P_80_sampai_84_tahun",
-              "jumlah_L_diatas_85_tahun",
-              "jumlah_P_diatas_85_tahun",
-              "jumlah_kasus_baru_L",
-              "jumlah_kasus_baru_P",
-              "total_kasus_baru",
-              "jumlah_kunjungan_L",
-              "jumlah_kunjungan_P",
-              "total_jumlah_kunjungan",
-            ],
+      if (
+        dataDetail[0].jumlah_kasus_baru_L <= dataDetail[0].jumlah_kunjungan_L
+      ) {
+        if (
+          dataDetail[0].jumlah_kasus_baru_P <= dataDetail[0].jumlah_kunjungan_P
+        ) {
+          try {
+            const resultInsertDetail = await rlLimaTitikSatuDetail.bulkCreate(
+              dataDetail,
+              {
+                transaction,
+                updateOnDuplicate: [
+                  "rl_lima_titik_satu_id",
+                  "jumlah_L_dibawah_1_jam",
+                  "jumlah_P_dibawah_1_jam",
+                  "jumlah_L_1_sampai_23_jam",
+                  "jumlah_P_1_sampai_23_jam",
+                  "jumlah_L_1_sampai_7_hari",
+                  "jumlah_P_1_sampai_7_hari",
+                  "jumlah_L_8_sampai_28_hari",
+                  "jumlah_P_8_sampai_28_hari",
+                  "jumlah_L_29_hari_sampai_dibawah_3_bulan",
+                  "jumlah_P_29_hari_sampai_dibawah_3_bulan",
+                  "jumlah_L_3_bulan_sampai_dibawah_6_bulan",
+                  "jumlah_P_3_bulan_sampai_dibawah_6_bulan",
+                  "jumlah_L_6_bulan_sampai_11_bulan",
+                  "jumlah_P_6_bulan_sampai_11_bulan",
+                  "jumlah_L_1_sampai_4_tahun",
+                  "jumlah_P_1_sampai_4_tahun",
+                  "jumlah_L_5_sampai_9_tahun",
+                  "jumlah_P_5_sampai_9_tahun",
+                  "jumlah_L_10_sampai_14_tahun",
+                  "jumlah_P_10_sampai_14_tahun",
+                  "jumlah_L_15_sampai_19_tahun",
+                  "jumlah_P_15_sampai_19_tahun",
+                  "jumlah_L_20_sampai_24_tahun",
+                  "jumlah_P_20_sampai_24_tahun",
+                  "jumlah_L_25_sampai_29_tahun",
+                  "jumlah_P_25_sampai_29_tahun",
+                  "jumlah_L_30_sampai_34_tahun",
+                  "jumlah_P_30_sampai_34_tahun",
+                  "jumlah_L_35_sampai_39_tahun",
+                  "jumlah_P_35_sampai_39_tahun",
+                  "jumlah_L_40_sampai_44_tahun",
+                  "jumlah_P_40_sampai_44_tahun",
+                  "jumlah_L_45_sampai_49_tahun",
+                  "jumlah_P_45_sampai_49_tahun",
+                  "jumlah_L_50_sampai_54_tahun",
+                  "jumlah_P_50_sampai_54_tahun",
+                  "jumlah_L_55_sampai_59_tahun",
+                  "jumlah_P_55_sampai_59_tahun",
+                  "jumlah_L_60_sampai_64_tahun",
+                  "jumlah_P_60_sampai_64_tahun",
+                  "jumlah_L_65_sampai_69_tahun",
+                  "jumlah_P_65_sampai_69_tahun",
+                  "jumlah_L_70_sampai_74_tahun",
+                  "jumlah_P_70_sampai_74_tahun",
+                  "jumlah_L_75_sampai_79_tahun",
+                  "jumlah_P_75_sampai_79_tahun",
+                  "jumlah_L_80_sampai_84_tahun",
+                  "jumlah_P_80_sampai_84_tahun",
+                  "jumlah_L_diatas_85_tahun",
+                  "jumlah_P_diatas_85_tahun",
+                  "jumlah_kasus_baru_L",
+                  "jumlah_kasus_baru_P",
+                  "total_kasus_baru",
+                  "jumlah_kunjungan_L",
+                  "jumlah_kunjungan_P",
+                  "total_jumlah_kunjungan",
+                ],
+              }
+            );
+            await transaction.commit();
+            res.status(201).send({
+              status: true,
+              message: "data created",
+              data: {
+                id: resultInsertHeader.id,
+              },
+            });
+          } catch (error) {
+            res.status(400).send({
+              status: false,
+              message: "Gagal Input Data.",
+            });
+            console.log(error);
+            await transaction.rollback();
           }
-        );
-        await transaction.commit();
-        res.status(201).send({
-          status: true,
-          message: "data created",
-          data: {
-            id: resultInsertHeader.id,
-          },
-        });
-      } catch (error) {
+        } else {
+          res.status(400).send({
+            status: false,
+            message:
+              "Data Jumlah Kasus Baru Perempuan Lebih Dari Jumlah Kunjungan Pasien Perempuan",
+          });
+          await transaction.rollback();
+        }
+      } else {
         res.status(400).send({
           status: false,
-          message: "Gagal Input Data.",
+          message:
+            "Data Jumlah Kasus Baru Laki - Laki Lebih Dari Jumlah Kunjungan Pasien Laki Laki",
         });
-        console.log(error);
         await transaction.rollback();
       }
     } else {
